@@ -1,65 +1,395 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import type { IconType } from "react-icons";
+import {
+  MdAccountTree,
+  MdAlarmOn,
+  MdCorporateFare,
+  MdEdit,
+  MdEngineering,
+  MdEventAvailable,
+  MdFlightTakeoff,
+  MdFormatQuote,
+  MdHomeWork,
+  MdInventory2,
+  MdPublic,
+  MdRoute,
+  MdStar,
+  MdSupportAgent,
+  MdTrackChanges,
+  MdVerified,
+} from "react-icons/md";
+import ContactForm from "./components/contact-form";
+
+export const metadata: Metadata = {
+  title: "Transport et demenagement fiable et ponctuel",
+  description:
+    "GLODIEXPOTRANS accompagne vos besoins en transport et demenagement: tournees, navettes, prestations ponctuelles et logistique B2B.",
+};
+
+type CardItem = {
+  icon: IconType;
+  title: string;
+  description: string;
+};
+
+const services: CardItem[] = [
+  {
+    icon: MdHomeWork,
+    title: "Demenagement professionnel",
+    description:
+      "Solutions de transfert pour particuliers et entreprises avec soin et efficacite.",
+  },
+  {
+    icon: MdRoute,
+    title: "Tournees regulieres",
+    description:
+      "Optimisation de vos trajets quotidiens avec des chauffeurs dedies.",
+  },
+  {
+    icon: MdCorporateFare,
+    title: "Transport B2B",
+    description:
+      "Transport de marchandises personnalise pour les professionnels exigeants.",
+  },
+  {
+    icon: MdEventAvailable,
+    title: "Prestations ponctuelles",
+    description:
+      "Renfort logistique et solutions de transport pour vos pics d'activite.",
+  },
+];
+
+const commitments: CardItem[] = [
+  {
+    icon: MdAlarmOn,
+    title: "Ponctualite",
+    description: "Le respect strict des creneaux horaires est notre engagement ndeg1.",
+  },
+  {
+    icon: MdAccountTree,
+    title: "Organisation",
+    description: "Une planification rigoureuse pour une logistique sans faille.",
+  },
+  {
+    icon: MdTrackChanges,
+    title: "Tracabilite",
+    description: "Suivi en temps reel pour une visibilite totale sur vos flux.",
+  },
+  {
+    icon: MdEngineering,
+    title: "Entretien",
+    description: "Une flotte moderne, revisee et parfaitement entretenue.",
+  },
+];
 
 export default function Home() {
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "MovingCompany",
+    name: "GLODIEXPOTRANS",
+    url: "https://glodiexpotrans.com",
+    image: "https://glodiexpotrans.com/image.jpg",
+    telephone: "+33 7 53 47 38 41",
+    email: "contact@glodiexpotrans.com",
+    areaServed: ["Dreux", "Eure-et-Loir", "Ile-de-France"],
+    address: {
+      "@type": "PostalAddress",
+      postalCode: "28100",
+      addressLocality: "Dreux",
+      addressCountry: "FR",
+    },
+    offers: services.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: service.title,
+        description: service.description,
+      },
+    })),
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="text-[var(--color-text)]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <header className="relative min-h-[88vh] overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            className="h-full w-full object-cover"
+            src="/image.jpg"
+            alt="Camionnette logistique"
+            fill
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a4d92f2] via-[#0a4d92bf] to-[#0a4d9233]" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <nav className="absolute inset-x-0 top-0 z-20 border-b border-white/15 bg-white/5 backdrop-blur-sm">
+          <div className="container-shell flex items-center justify-between py-5">
+            <div className="flex items-center gap-3 text-white">
+              <div className="grid h-11 w-11 place-items-center rounded-full border border-white/30 bg-white/10 text-xl">
+                <MdPublic className="text-[28px] text-[var(--color-accent)]" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold leading-none tracking-tight">
+                  GLODI<span className="text-[var(--color-accent)]">EXPOTRANS</span>
+                </p>
+                <p className="text-[11px] uppercase tracking-[0.2em] text-white/70">
+                  Expertise logistique
+                </p>
+              </div>
+            </div>
+
+            <div className="hidden items-center gap-8 text-sm font-semibold text-white md:flex">
+              <a className="transition-colors hover:text-[var(--color-accent)]" href="#services">
+                Services
+              </a>
+              <a
+                className="transition-colors hover:text-[var(--color-accent)]"
+                href="#engagements"
+              >
+                Engagements
+              </a>
+              <a className="transition-colors hover:text-[var(--color-accent)]" href="#contact">
+                Contact
+              </a>
+            </div>
+          </div>
+        </nav>
+
+        <div className="container-shell relative z-10 flex min-h-[88vh] items-center pb-20 pt-28">
+          <div className="max-w-3xl text-white">
+            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-accent)]/35 bg-[var(--color-accent)]/20 px-4 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-accent)]">
+              <MdFlightTakeoff className="text-base" />
+              Base a Dreux (28)
+            </p>
+            <h1 className="text-4xl font-bold leading-tight sm:text-6xl lg:text-7xl">
+              Transport et demenagement
+              <br />
+              <span className="text-[var(--color-accent)]">fiable et ponctuel</span>
+            </h1>
+            <p className="mt-7 max-w-2xl text-lg font-light leading-relaxed text-white/90 sm:text-xl">
+              Tournees, navettes, demenagement et transport B2B. Votre partenaire
+              logistique de confiance, alliant rigueur, force et couverture regionale.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-5">
+              <a
+                href="#contact"
+                className="rounded-full bg-gradient-to-r from-[var(--color-accent-start)] to-[var(--color-accent-end)] px-8 py-4 text-lg font-bold text-[var(--color-secondary)] shadow-xl shadow-[var(--color-accent)]/20 transition-transform hover:scale-[1.02]"
+              >
+                Demarrer un projet
+              </a>
+              <div className="flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm">
+                <MdVerified className="text-[22px] text-[var(--color-accent)]" />
+                <div>
+                  <p className="text-sm font-bold">Certifie et assure</p>
+                  <p className="text-xs text-white/65">Serenite garantie</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
+      </header>
+
+      <section className="sticky top-0 z-30 border-b-4 border-[var(--color-accent)] bg-white/95 shadow-xl backdrop-blur-md">
+        <div className="container-shell flex flex-col items-center justify-between gap-5 py-4 md:flex-row">
+          <div className="flex items-center gap-3 text-[var(--color-primary)]">
+            <div className="grid h-11 w-11 place-items-center rounded-full bg-[var(--color-primary)]/10 text-xl">
+              <MdSupportAgent className="text-[28px]" />
+            </div>
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">
+                Ligne directe
+              </p>
+              <a href="tel:+33753473841" className="text-2xl font-bold hover:underline">
+                (+33 7 53 47 38 41)
+              </a>
+            </div>
+          </div>
+          <div className="flex w-full gap-3 md:w-auto">
+            <a
+              href="#contact"
+              className="flex-1 rounded-full bg-[var(--color-primary)] px-6 py-3 text-center font-bold text-white transition-colors hover:bg-[var(--color-secondary)] md:flex-none"
+            >
+              Demander un devis
+            </a>
+            <a
+              href="#contact"
+              className="flex-1 rounded-full bg-gradient-to-r from-[var(--color-accent-start)] to-[var(--color-accent-end)] px-6 py-3 text-center font-bold text-[var(--color-secondary)] md:flex-none"
+            >
+              Etre rappele
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="relative overflow-hidden bg-[var(--color-paper)] py-24">
+        <div className="container-shell grid gap-16 lg:grid-cols-2 lg:gap-20">
+          <div>
+            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-primary)]/15 bg-[var(--color-primary)]/5 px-4 py-1.5 text-sm font-bold text-[var(--color-primary)]">
+              <MdInventory2 className="text-base" />
+              NOS SERVICES
+            </p>
+            <h2 className="mb-10 text-4xl font-bold leading-tight">
+              Expertise logistique
+              <br />
+              <span className="text-[var(--color-primary)]">sur mesure</span>
+            </h2>
+
+            <div className="space-y-5">
+              {services.map((service) => (
+                <article
+                  key={service.title}
+                  className="group flex gap-5 rounded-2xl border border-slate-100 bg-white p-7 transition-all hover:border-[var(--color-primary)]/25 hover:shadow-xl hover:shadow-[var(--color-primary)]/10"
+                >
+                  {(() => {
+                    const ServiceIcon = service.icon;
+                    return (
+                  <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] text-2xl text-white transition-transform group-hover:scale-105">
+                        <ServiceIcon className="text-[30px]" />
+                  </div>
+                    );
+                  })()}
+                  <div>
+                    <h3 className="text-xl font-bold text-[var(--color-primary)]">{service.title}</h3>
+                    <p className="mt-2 leading-relaxed text-[var(--color-muted)]">
+                      {service.description}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <aside
+            id="engagements"
+            className="relative self-start overflow-hidden rounded-[2.25rem] bg-[var(--color-primary)] p-10 text-white shadow-2xl md:p-12"
+          >
+            <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full border border-white/20" />
+            <div className="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full border border-white/15" />
+            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/20 px-4 py-1.5 text-sm font-bold text-[var(--color-accent)]">
+              <MdStar className="text-base" />
+              NOS ENGAGEMENTS
+            </p>
+            <h2 className="mb-10 text-4xl font-bold leading-tight">
+              Pourquoi choisir
+              <br />
+              GLODIEXPOTRANS ?
+            </h2>
+
+            <div className="grid gap-8 sm:grid-cols-2">
+              {commitments.map((item) => (
+                <article key={item.title}>
+                  <div className="mb-3 grid h-11 w-11 place-items-center rounded-full bg-white/10 text-xl">
+                    {(() => {
+                      const CommitmentIcon = item.icon;
+                      return <CommitmentIcon className="text-[24px] text-[var(--color-accent)]" />;
+                    })()}
+                  </div>
+                  <h3 className="text-lg font-bold">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/70">{item.description}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-12 flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+              <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full border-2 border-[var(--color-accent)]/40 bg-[var(--color-accent)]/20 text-xl text-[var(--color-accent)]">
+                <MdFormatQuote className="text-[24px]" />
+              </div>
+              <div>
+                <p className="italic text-white/90">
+                  &quot;Un partenaire essentiel a notre chaine logistique et nos
+                  demenagements.&quot;
+                </p>
+                <p className="mt-1 text-sm font-bold">Responsable logistique, Dreux (28)</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="contact" className="bg-slate-50 py-24">
+        <div className="container-shell grid items-start gap-14 lg:grid-cols-5">
+          <div className="space-y-8 lg:col-span-2">
+            <div>
+              <h2 className="text-4xl font-bold text-[var(--color-primary)]">
+                Proximite <span className="text-[var(--color-text)]">&amp;</span> Reactivite
+              </h2>
+              <p className="mt-5 text-lg leading-relaxed text-[var(--color-muted)]">
+                Bases a Dreux (28), nous couvrons le bassin eurelien et l&apos;Ile-de-France
+                pour vos transports et demenagements.
+              </p>
+            </div>
+
+            <div className="relative h-[340px] overflow-hidden rounded-3xl border-8 border-white shadow-2xl">
+              <Image
+                className="object-cover"
+                src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?auto=format&fit=crop&w=1200&q=80"
+                alt="Carte de localisation"
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <article className="rounded-xl border border-slate-100 bg-white p-4 shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Adresse</p>
+                <p className="mt-1 text-sm font-semibold">28100 Dreux, France</p>
+              </article>
+              <article className="rounded-xl border border-slate-100 bg-white p-4 shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Email</p>
+                <p className="mt-1 text-sm font-semibold">contact@glodiexpotrans.com</p>
+              </article>
+            </div>
+          </div>
+
+          <div className="relative rounded-[2.25rem] border border-slate-100 bg-white p-8 shadow-2xl md:p-12 lg:col-span-3">
+            <div className="absolute -right-5 -top-5 grid h-16 w-16 place-items-center rounded-full bg-[var(--color-accent)] text-3xl shadow-lg">
+              <MdEdit className="text-[36px] text-[var(--color-secondary)]" />
+            </div>
+            <h3 className="mb-8 text-3xl font-bold text-[var(--color-primary)]">
+              Discutons de vos besoins
+            </h3>
+            <ContactForm />
+          </div>
+        </div>
+      </section>
+
+      <footer className="relative overflow-hidden bg-[var(--color-secondary)] py-16 text-white">
+        <div className="container-shell flex flex-col items-center justify-between gap-10 md:flex-row">
+          <div className="text-center md:text-left">
+            <p className="text-3xl font-bold tracking-tight">
+              GLODI<span className="text-[var(--color-accent)]">EXPOTRANS</span>
+            </p>
+            <p className="mt-2 max-w-sm text-sm text-white/60">
+              Votre partenaire de confiance pour le transport et le demenagement a Dreux
+              et ses environs.
+            </p>
+          </div>
+
+          <div className="flex gap-6 text-sm font-semibold uppercase tracking-widest text-white/85">
+            <a href="#services" className="transition-colors hover:text-[var(--color-accent)]">
+              Services
+            </a>
+            <a
+              href="#engagements"
+              className="transition-colors hover:text-[var(--color-accent)]"
+            >
+              Engagements
+            </a>
+            <a href="#contact" className="transition-colors hover:text-[var(--color-accent)]">
+              Contact
+            </a>
+          </div>
+        </div>
+        <p className="mt-10 text-center text-xs tracking-wide text-white/50">
+          © 2026 GLODIEXPOTRANS. Mentions legales | Dreux (28)
+        </p>
+      </footer>
     </div>
   );
 }
