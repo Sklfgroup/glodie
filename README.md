@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment on cPanel (Node.js App)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project is now configured to run on cPanel using a Node.js application.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### What was added
 
-## Learn More
+- `server.js`: production HTTP server compatible with cPanel ports.
+- `npm start`: now runs `node server.js` in production mode.
 
-To learn more about Next.js, take a look at the following resources:
+### cPanel setup steps
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. In cPanel, open **Setup Node.js App**.
+2. Create the app with:
+   - **Application mode**: `Production`
+   - **Startup file**: `server.js`
+   - **Node.js version**: `20+` (recommended)
+3. In the app terminal (or SSH), run:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm install
+npm run build:cpanel
+```
 
-## Deploy on Vercel
+4. Click **Restart App** in cPanel.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- cPanel injects `PORT`, and `server.js` listens automatically on it.
+- If you use SMTP (nodemailer), configure your env vars in cPanel before restarting.
+- If you hit CloudLinux memory limits during build, `build:cpanel` uses Webpack and a reduced Node heap to avoid OOM in many shared-hosting environments.
