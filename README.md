@@ -7,12 +7,21 @@ npm run dev
 
 ## Deployment on cPanel (Node.js App)
 
-This project is now configured to run on cPanel using a Node.js application.
+This project is configured to deploy with GitHub Actions on a dedicated `deploy` branch.
+The server no longer needs to run `next build` on cPanel.
 
 ### What was added
 
 - `server.js`: production HTTP server compatible with cPanel ports.
 - `npm start`: now runs `node server.js` in production mode.
+- `next.config.ts`: `output: "standalone"` for production bundle output.
+- `.github/workflows/deploy.yml`: builds from `main` and publishes runtime files to `deploy`.
+
+### GitHub flow
+
+1. Push code to `main`.
+2. GitHub Action builds the app.
+3. Built files are pushed automatically to `deploy`.
 
 ### cPanel setup steps
 
@@ -21,17 +30,17 @@ This project is now configured to run on cPanel using a Node.js application.
    - **Application mode**: `Production`
    - **Startup file**: `server.js`
    - **Node.js version**: `20+` (recommended)
-3. In the app terminal (or SSH), run:
+3. Point your Git deployment to branch `deploy`.
+4. In the app terminal (or SSH), run once (or after dependency changes):
 
 ```bash
 npm install
-npm run build:cpanel
 ```
 
-4. Click **Restart App** in cPanel.
+5. Click **Restart App** in cPanel after each deployment.
 
 ### Notes
 
 - cPanel injects `PORT`, and `server.js` listens automatically on it.
 - If you use SMTP (nodemailer), configure your env vars in cPanel before restarting.
-- If you hit CloudLinux memory limits during build, `build:cpanel` uses Webpack and a reduced Node heap to avoid OOM in many shared-hosting environments.
+- Build memory pressure now happens on GitHub Actions, not on your cPanel server.
