@@ -1,4 +1,4 @@
-name: Build and Sync Deploy Branch
+name: Build and Publish Deploy Branch
 
 on:
   push:
@@ -33,5 +33,21 @@ jobs:
       - name: Build app
         run: npm run build
 
-      - name: Sync source to deploy branch
-        run: git push origin HEAD:deploy --force
+      - name: Prepare deploy content (source + build)
+        run: |
+          rm -rf deploy
+          mkdir -p deploy
+          rsync -a \
+            --exclude='.git' \
+            --exclude='node_modules' \
+            --exclude='deploy' \
+            ./ deploy/
+          cp -R .next deploy/.next
+
+      - name: Publish to deploy branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deploy
+          publish_branch: deploy
+          force_orphan: true

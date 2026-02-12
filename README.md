@@ -8,19 +8,19 @@ npm run dev
 ## Deployment on cPanel (Node.js App)
 
 This project is configured with GitHub Actions on a dedicated `deploy` branch.
-The workflow builds for verification, then pushes the full source code to `deploy`.
+The workflow builds on GitHub, then pushes full source code and the generated `.next` build to `deploy`.
 
 ### What was added
 
 - `server.js`: production HTTP server compatible with cPanel ports.
 - `npm start`: now runs `node server.js` in production mode.
-- `.github/workflows/deploy.yml`: builds from `main` and syncs the full repository to `deploy`.
+- `.github/workflows/deploy.yml`: builds from `main` and publishes source + `.next` to `deploy`.
 
 ### GitHub flow
 
 1. Push code to `main`.
-2. GitHub Action builds the app (verification).
-3. The full source code is pushed automatically to `deploy`.
+2. GitHub Action builds the app.
+3. Full source code and `.next` output are pushed automatically to `deploy`.
 
 ### cPanel setup steps
 
@@ -34,7 +34,6 @@ The workflow builds for verification, then pushes the full source code to `deplo
 
 ```bash
 npm install
-npm run build:cpanel
 ```
 
 5. Click **Restart App** in cPanel after each deployment.
@@ -43,4 +42,4 @@ npm run build:cpanel
 
 - cPanel injects `PORT`, and `server.js` listens automatically on it.
 - If you use SMTP (nodemailer), configure your env vars in cPanel before restarting.
-- GitHub build validates the code before sync; cPanel still builds from source on `deploy`.
+- Build is done on GitHub Actions. cPanel only installs dependencies and starts the app.
