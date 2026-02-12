@@ -33,15 +33,11 @@ jobs:
       - name: Build app
         run: npm run build
 
-      - name: Prepare deploy content (source + build)
+      - name: Prepare deploy branch content
         run: |
           rm -rf deploy
           mkdir -p deploy
-          rsync -a \
-            --exclude='.git' \
-            --exclude='node_modules' \
-            --exclude='deploy' \
-            ./ deploy/
+          git archive --format=tar HEAD | tar -x -C deploy
           cp -R .next deploy/.next
 
       - name: Publish to deploy branch
