@@ -12,7 +12,6 @@ import {
   MdFormatQuote,
   MdHomeWork,
   MdInventory2,
-  MdPublic,
   MdRoute,
   MdStar,
   MdSupportAgent,
@@ -22,9 +21,9 @@ import {
 import ContactForm from "./components/contact-form";
 
 export const metadata: Metadata = {
-  title: "Transport et demenagement fiable et ponctuel",
+  title: "Transport et déménagement fiable et ponctuel",
   description:
-    "GLODIEXPOTRANS accompagne vos besoins en transport et demenagement: tournees, navettes, prestations ponctuelles et logistique B2B.",
+    "GLODIEXPOTRANS accompagne vos besoins en transport et déménagement: tournées, navettes, prestations ponctuelles et logistique B2B.",
 };
 
 type CardItem = {
@@ -36,35 +35,35 @@ type CardItem = {
 const services: CardItem[] = [
   {
     icon: MdHomeWork,
-    title: "Demenagement professionnel",
+    title: "Déménagement professionnel",
     description:
-      "Solutions de transfert pour particuliers et entreprises avec soin et efficacite.",
+      "Solutions de transfert pour particuliers et entreprises avec soin et efficacité.",
   },
   {
     icon: MdRoute,
-    title: "Tournees regulieres",
+    title: "Tournées régulières",
     description:
-      "Optimisation de vos trajets quotidiens avec des chauffeurs dedies.",
+      "Optimisation de vos trajets quotidiens avec des chauffeurs dédiés.",
   },
   {
     icon: MdCorporateFare,
     title: "Transport B2B",
     description:
-      "Transport de marchandises personnalise pour les professionnels exigeants.",
+      "Transport de marchandises personnalisé pour les professionnels exigeants.",
   },
   {
     icon: MdEventAvailable,
     title: "Prestations ponctuelles",
     description:
-      "Renfort logistique et solutions de transport pour vos pics d'activite.",
+      "Renfort logistique et solutions de transport pour vos pics d'activité.",
   },
 ];
 
 const commitments: CardItem[] = [
   {
     icon: MdAlarmOn,
-    title: "Ponctualite",
-    description: "Le respect strict des creneaux horaires est notre engagement ndeg1.",
+    title: "Ponctualité",
+    description: "Le respect strict des créneaux horaires est notre engagement n°1.",
   },
   {
     icon: MdAccountTree,
@@ -73,13 +72,13 @@ const commitments: CardItem[] = [
   },
   {
     icon: MdTrackChanges,
-    title: "Tracabilite",
-    description: "Suivi en temps reel pour une visibilite totale sur vos flux.",
+    title: "Traçabilité",
+    description: "Suivi en temps réel pour une visibilité totale sur vos flux.",
   },
   {
     icon: MdEngineering,
     title: "Entretien",
-    description: "Une flotte moderne, revisee et parfaitement entretenue.",
+    description: "Une flotte moderne, révisée et parfaitement entretenue.",
   },
 ];
 
@@ -92,7 +91,7 @@ export default function Home() {
     image: "https://glodiexpotrans.com/image.jpg",
     telephone: "+33 7 53 47 38 41",
     email: "contact@glodiexpotrans.com",
-    areaServed: ["Dreux", "Eure-et-Loir", "Ile-de-France"],
+    areaServed: ["Dreux", "Eure-et-Loir", "Île-de-France"],
     address: {
       "@type": "PostalAddress",
       postalCode: "28100",
@@ -131,8 +130,8 @@ export default function Home() {
         <nav className="absolute inset-x-0 top-0 z-20 border-b border-white/15 bg-white/5 backdrop-blur-sm">
           <div className="container-shell flex items-center justify-between py-5">
             <div className="flex items-center gap-3 text-white">
-              <div className="grid h-11 w-11 place-items-center rounded-full border border-white/30 bg-white/10 text-xl">
-                <MdPublic className="text-[28px] text-[var(--color-accent)]" />
+              <div className="flex h-14 w-14 items-center justify-center">
+                <Image src="/logo.png" alt="Logo GLODIEXPOTRANS" width={52} height={52} />
               </div>
               <div>
                 <p className="text-2xl font-bold leading-none tracking-tight">
@@ -165,29 +164,29 @@ export default function Home() {
           <div className="max-w-3xl text-white">
             <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-accent)]/35 bg-[var(--color-accent)]/20 px-4 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-accent)]">
               <MdFlightTakeoff className="text-base" />
-              Base a Dreux (28)
+              Basé à Dreux (28)
             </p>
             <h1 className="text-4xl font-bold leading-tight sm:text-6xl lg:text-7xl">
-              Transport et demenagement
+              Transport et déménagement
               <br />
               <span className="text-[var(--color-accent)]">fiable et ponctuel</span>
             </h1>
             <p className="mt-7 max-w-2xl text-lg font-light leading-relaxed text-white/90 sm:text-xl">
-              Tournees, navettes, demenagement et transport B2B. Votre partenaire
-              logistique de confiance, alliant rigueur, force et couverture regionale.
+              Tournées, navettes, déménagement et transport B2B. Votre partenaire
+              logistique de confiance, alliant rigueur, force et couverture régionale.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-5">
               <a
                 href="#contact"
                 className="rounded-full bg-gradient-to-r from-[var(--color-accent-start)] to-[var(--color-accent-end)] px-8 py-4 text-lg font-bold text-[var(--color-secondary)] shadow-xl shadow-[var(--color-accent)]/20 transition-transform hover:scale-[1.02]"
               >
-                Demarrer un projet
+                Démarrer un projet
               </a>
               <div className="flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm">
                 <MdVerified className="text-[22px] text-[var(--color-accent)]" />
                 <div>
-                  <p className="text-sm font-bold">Certifie et assure</p>
-                  <p className="text-xs text-white/65">Serenite garantie</p>
+                  <p className="text-sm font-bold">Certifié et assuré</p>
+                  <p className="text-xs text-white/65">Sérénité garantie</p>
                 </div>
               </div>
             </div>
@@ -221,7 +220,7 @@ export default function Home() {
               href="#contact"
               className="flex-1 rounded-full bg-gradient-to-r from-[var(--color-accent-start)] to-[var(--color-accent-end)] px-6 py-3 text-center font-bold text-[var(--color-secondary)] md:flex-none"
             >
-              Etre rappele
+               Être rappelé
             </a>
           </div>
         </div>
@@ -302,8 +301,8 @@ export default function Home() {
               </div>
               <div>
                 <p className="italic text-white/90">
-                  &quot;Un partenaire essentiel a notre chaine logistique et nos
-                  demenagements.&quot;
+                  &quot;Un partenaire essentiel à notre chaîne logistique et nos
+                  déménagements.&quot;
                 </p>
                 <p className="mt-1 text-sm font-bold">Responsable logistique, Dreux (28)</p>
               </div>
@@ -317,11 +316,11 @@ export default function Home() {
           <div className="space-y-8 lg:col-span-2">
             <div>
               <h2 className="text-4xl font-bold text-[var(--color-primary)]">
-                Proximite <span className="text-[var(--color-text)]">&amp;</span> Reactivite
+                Proximité <span className="text-[var(--color-text)]">&amp;</span> Réactivité
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-[var(--color-muted)]">
-                Bases a Dreux (28), nous couvrons le bassin eurelien et l&apos;Ile-de-France
-                pour vos transports et demenagements.
+                Basés à Dreux (28), nous couvrons le bassin eurélien et l&apos;Île-de-France
+                pour vos transports et déménagements.
               </p>
             </div>
 
@@ -366,7 +365,7 @@ export default function Home() {
               GLODI<span className="text-[var(--color-accent)]">EXPOTRANS</span>
             </p>
             <p className="mt-2 max-w-sm text-sm text-white/60">
-              Votre partenaire de confiance pour le transport et le demenagement a Dreux
+              Votre partenaire de confiance pour le transport et le déménagement à Dreux
               et ses environs.
             </p>
           </div>
@@ -387,7 +386,7 @@ export default function Home() {
           </div>
         </div>
         <p className="mt-10 text-center text-xs tracking-wide text-white/50">
-          © 2026 GLODIEXPOTRANS. Mentions legales | Dreux (28)
+          © 2026 GLODIEXPOTRANS. Mentions légales | Dreux (28)
         </p>
       </footer>
     </div>

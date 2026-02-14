@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "GLODIEXPOTRANS",
     short_name: "GLODIEXPOTRANS",
     description:
-      "Transport, demenagement et logistique B2B fiable et ponctuel a Dreux et en Ile-de-France.",
+      "Transport, déménagement et logistique B2B fiable et ponctuel à Dreux et en Île-de-France.",
     start_url: "/",
     display: "standalone",
     background_color: "#fcfcfd",
@@ -13,9 +13,9 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: "fr",
     icons: [
       {
-        src: "/favicon.ico",
-        sizes: "48x48",
-        type: "image/x-icon",
+        src: "/logo.png",
+        sizes: "512x512",
+        type: "image/png",
       },
     ],
   };

@@ -14,7 +14,7 @@ const initialState: FormState = {
   fullName: "",
   company: "",
   phone: "",
-  needType: "Demenagement",
+  needType: "Déménagement",
   message: "",
 };
 
@@ -46,10 +46,10 @@ export default function ContactForm() {
 
       setForm(initialState);
       setStatus("success");
-      setStatusMessage("Votre demande a ete envoyee. Nous revenons vers vous sous 24h ouvrees.");
+      setStatusMessage("Votre demande a ete envoyee. Nous revenons vers vous sous 24h ouvrées.");
     } catch {
       setStatus("error");
-      setStatusMessage("Echec d'envoi. Verifiez la configuration SMTP puis reessayez.");
+      setStatusMessage("Échec d'envoi. Vérifiez la configuration SMTP puis réessayez.");
     } finally {
       setIsSubmitting(false);
     }
@@ -72,14 +72,14 @@ export default function ContactForm() {
         Entreprise
         <input
           type="text"
-          placeholder="Votre societe"
+          placeholder="Votre société"
           value={form.company}
           onChange={(event) => setForm((prev) => ({ ...prev, company: event.target.value }))}
           className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/25"
         />
       </label>
       <label className="text-sm font-semibold text-slate-600">
-        Telephone
+        Téléphone
         <input
           required
           type="tel"
@@ -96,8 +96,8 @@ export default function ContactForm() {
           onChange={(event) => setForm((prev) => ({ ...prev, needType: event.target.value }))}
           className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/25"
         >
-          <option>Demenagement</option>
-          <option>Tournee reguliere</option>
+          <option>Déménagement</option>
+          <option>Tournée régulière</option>
           <option>Transport B2B</option>
           <option>Prestation ponctuelle</option>
           <option>Autre</option>
@@ -108,7 +108,7 @@ export default function ContactForm() {
         <textarea
           required
           rows={4}
-          placeholder="Decrivez brievement votre projet (volume, distance, dates souhaitees...)"
+          placeholder="Décrivez brièvement votre projet (volume, distance, dates souhaitées...)"
           value={form.message}
           onChange={(event) => setForm((prev) => ({ ...prev, message: event.target.value }))}
           className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/25"
@@ -123,7 +123,7 @@ export default function ContactForm() {
           {isSubmitting ? "Envoi en cours..." : "Envoyer ma demande"}
         </button>
         <p className="mt-4 text-center text-xs font-medium text-slate-400">
-          Reponse sous 24h ouvrees garantie.
+          Réponse sous 24h ouvrées garantie.
         </p>
         {status !== "idle" && (
           <p

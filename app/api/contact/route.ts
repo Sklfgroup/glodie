@@ -59,7 +59,7 @@ export async function POST(request: Request) {
       text:
         `Nom: ${fullName}\n` +
         `Entreprise: ${company || "-"}\n` +
-        `Telephone: ${phone}\n` +
+        `Téléphone: ${phone}\n` +
         `Type de besoin: ${needType || "-"}\n` +
         `Date: ${sentAt}\n\n` +
         `Message:\n${message}`,
@@ -67,7 +67,7 @@ export async function POST(request: Request) {
         <h2>Nouvelle demande depuis le site</h2>
         <p><strong>Nom:</strong> ${fullName}</p>
         <p><strong>Entreprise:</strong> ${company || "-"}</p>
-        <p><strong>Telephone:</strong> ${phone}</p>
+        <p><strong>Téléphone:</strong> ${phone}</p>
         <p><strong>Type de besoin:</strong> ${needType || "-"}</p>
         <p><strong>Date:</strong> ${sentAt}</p>
         <hr />

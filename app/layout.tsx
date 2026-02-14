@@ -10,14 +10,14 @@ const lexend = Lexend({
 export const metadata: Metadata = {
   metadataBase: new URL("https://glodiexpotrans.com"),
   title: {
-    default: "GLODIEXPOTRANS | Transport et demenagement a Dreux",
+    default: "GLODIEXPOTRANS | Transport et déménagement à Dreux",
     template: "%s | GLODIEXPOTRANS",
   },
   description:
-    "Transport, navettes, demenagement et logistique B2B a Dreux (28) et en Ile-de-France. Service fiable, ponctuel et assure.",
+    "Transport, navettes, déménagement et logistique B2B à Dreux (28) et en Île-de-France. Service fiable, ponctuel et assuré.",
   keywords: [
     "transport Dreux",
-    "demenagement Dreux",
+    "déménagement Dreux",
     "transport B2B",
     "navette logistique",
     "glodiexpotrans",
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://glodiexpotrans.com",
     siteName: "GLODIEXPOTRANS",
-    title: "GLODIEXPOTRANS | Transport et demenagement a Dreux",
+    title: "GLODIEXPOTRANS | Transport et déménagement à Dreux",
     description:
-      "Votre partenaire logistique a Dreux: demenagement, transport B2B, tournees regulieres et prestations ponctuelles.",
+      "Votre partenaire logistique à Dreux: déménagement, transport B2B, tournées régulières et prestations ponctuelles.",
     images: [
       {
         url: "/image.jpg",
@@ -44,9 +44,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "GLODIEXPOTRANS | Transport et demenagement a Dreux",
+    title: "GLODIEXPOTRANS | Transport et déménagement à Dreux",
     description:
-      "Transport, demenagement et logistique B2B fiable et ponctuel a Dreux et en Ile-de-France.",
+      "Transport, déménagement et logistique B2B fiable et ponctuel à Dreux et en Île-de-France.",
     images: ["/image.jpg"],
   },
   robots: {
@@ -61,8 +61,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: "/logo.png",
+    apple: "/logo.png",
   },
   manifest: "/manifest.webmanifest",
 };
