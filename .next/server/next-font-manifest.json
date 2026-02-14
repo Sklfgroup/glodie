@@ -1,0 +1,13 @@
+{
+  "app": {
+    "[project]/app/_not-found/page": [
+      "static/media/ca31d6821328a4e9-s.p.8036670a.woff2"
+    ],
+    "[project]/app/page": [
+      "static/media/ca31d6821328a4e9-s.p.8036670a.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}

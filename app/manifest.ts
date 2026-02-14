@@ -1,0 +1,22 @@
+import type { MetadataRoute } from "next";
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: "GLODIEXPOTRANS",
+    short_name: "GLODIEXPOTRANS",
+    description:
+      "Transport, déménagement et logistique B2B fiable et ponctuel à Dreux et en Île-de-France.",
+    start_url: "/",
+    display: "standalone",
+    background_color: "#fcfcfd",
+    theme_color: "#0a4d92",
+    lang: "fr",
+    icons: [
+      {
+        src: "/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+  };
+}
