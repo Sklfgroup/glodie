@@ -209,7 +209,7 @@ export default function Home() {
                 </p>
                 <a
                   href="tel:+33749715014"
-                  className="break-words text-base font-bold leading-tight hover:underline sm:text-lg md:text-2xl"
+                  className="break-words text-sm font-bold leading-tight hover:underline sm:text-lg md:text-2xl"
                 >
                   +33 7 49 71 50 14
                 </a>
@@ -228,7 +228,7 @@ export default function Home() {
                   href="https://wa.me/33753473841"
                   target="_blank"
                   rel="noreferrer"
-                  className="break-words text-base font-bold leading-tight hover:underline sm:text-lg md:text-2xl"
+                  className="break-words text-sm font-bold leading-tight hover:underline sm:text-lg md:text-2xl"
                 >
                   +33 7 53 47 38 41
                 </a>
