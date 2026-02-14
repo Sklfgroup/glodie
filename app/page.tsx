@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import type { IconType } from "react-icons";
+import { FaWhatsapp } from "react-icons/fa6";
 import {
   MdAccountTree,
   MdAlarmOn,
@@ -19,6 +20,7 @@ import {
   MdVerified,
 } from "react-icons/md";
 import ContactForm from "./components/contact-form";
+import CopyableText from "./components/copyable-text";
 
 export const metadata: Metadata = {
   title: "Transport et déménagement fiable et ponctuel",
@@ -89,7 +91,7 @@ export default function Home() {
     name: "GLODIEXPOTRANS",
     url: "https://glodiexpotrans.com",
     image: "https://glodiexpotrans.com/image.jpg",
-    telephone: "+33 7 53 47 38 41",
+    telephone: "+33 7 49 71 50 14",
     email: "contact@glodiexpotrans.com",
     areaServed: ["Dreux", "Eure-et-Loir", "Île-de-France"],
     address: {
@@ -196,17 +198,38 @@ export default function Home() {
 
       <section className="sticky top-0 z-30 border-b-4 border-[var(--color-accent)] bg-white/95 shadow-xl backdrop-blur-md">
         <div className="container-shell flex flex-col items-center justify-between gap-5 py-4 md:flex-row">
-          <div className="flex items-center gap-3 text-[var(--color-primary)]">
-            <div className="grid h-11 w-11 place-items-center rounded-full bg-[var(--color-primary)]/10 text-xl">
-              <MdSupportAgent className="text-[28px]" />
+          <div className="flex flex-wrap items-center justify-center gap-6 text-[var(--color-primary)]">
+            <div className="flex items-center gap-3">
+              <div className="grid h-11 w-11 place-items-center rounded-full bg-[var(--color-primary)]/10 text-xl">
+                <MdSupportAgent className="text-[28px]" />
+              </div>
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">
+                  Ligne directe
+                </p>
+                <a href="tel:+33749715014" className="text-2xl font-bold hover:underline">
+                  (+33 7 49 71 50 14)
+                </a>
+              </div>
             </div>
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">
-                Ligne directe
-              </p>
-              <a href="tel:+33753473841" className="text-2xl font-bold hover:underline">
-                (+33 7 53 47 38 41)
-              </a>
+
+            <div className="flex items-center gap-3">
+              <div className="grid h-11 w-11 place-items-center rounded-full bg-[var(--color-primary)]/10 text-xl">
+                <FaWhatsapp className="text-[28px]" />
+              </div>
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">
+                  WhatsApp
+                </p>
+                <a
+                  href="https://wa.me/33753473841"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-2xl font-bold hover:underline"
+                >
+                  (+33 7 53 47 38 41)
+                </a>
+              </div>
             </div>
           </div>
           <div className="flex w-full gap-3 md:w-auto">
@@ -325,12 +348,14 @@ export default function Home() {
             </div>
 
             <div className="relative h-[340px] overflow-hidden rounded-3xl border-8 border-white shadow-2xl">
-              <Image
-                className="object-cover"
-                src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?auto=format&fit=crop&w=1200&q=80"
-                alt="Carte de localisation"
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
+              <iframe
+                title="Carte - Dreux (28100)"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42091.64634769839!2d1.3581966227539022!3d48.748894374794986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e1551ee0688e79%3A0x40dc8d7053981f0!2s28100%20Dreux%2C%20France!5e0!3m2!1sfr!2scm!4v1771057867474!5m2!1sfr!2scm"
+                className="absolute inset-0 h-full w-full"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
 
@@ -339,9 +364,13 @@ export default function Home() {
                 <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Adresse</p>
                 <p className="mt-1 text-sm font-semibold">28100 Dreux, France</p>
               </article>
-              <article className="rounded-xl border border-slate-100 bg-white p-4 shadow-sm">
+              <article className="min-w-0 rounded-xl border border-slate-100 bg-white p-4 shadow-sm">
                 <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Email</p>
-                <p className="mt-1 text-sm font-semibold">contact@glodiexpotrans.com</p>
+                <CopyableText
+                  value="contact@glodiexpotrans.com"
+                  copiedText="Copié !"
+                  className="mt-1 truncate text-sm font-semibold"
+                />
               </article>
             </div>
           </div>

@@ -4,6 +4,7 @@ import nodemailer from "nodemailer";
 type ContactPayload = {
   fullName?: string;
   company?: string;
+  email?: string;
   phone?: string;
   needType?: string;
   message?: string;
@@ -21,11 +22,14 @@ export async function POST(request: Request) {
 
     const fullName = asText(body.fullName);
     const company = asText(body.company);
+    const email = asText(body.email);
     const phone = asText(body.phone);
     const needType = asText(body.needType);
     const message = asText(body.message);
 
-    if (!fullName || !phone || !message) {
+    const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!fullName || !emailIsValid || !phone || !message) {
       return NextResponse.json({ error: "INVALID_PAYLOAD" }, { status: 400 });
     }
 
@@ -59,6 +63,7 @@ export async function POST(request: Request) {
       text:
         `Nom: ${fullName}\n` +
         `Entreprise: ${company || "-"}\n` +
+        `Email: ${email}\n` +
         `Téléphone: ${phone}\n` +
         `Type de besoin: ${needType || "-"}\n` +
         `Date: ${sentAt}\n\n` +
@@ -67,6 +72,7 @@ export async function POST(request: Request) {
         <h2>Nouvelle demande depuis le site</h2>
         <p><strong>Nom:</strong> ${fullName}</p>
         <p><strong>Entreprise:</strong> ${company || "-"}</p>
+        <p><strong>Email:</strong> ${email}</p>
         <p><strong>Téléphone:</strong> ${phone}</p>
         <p><strong>Type de besoin:</strong> ${needType || "-"}</p>
         <p><strong>Date:</strong> ${sentAt}</p>

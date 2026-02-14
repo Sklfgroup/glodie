@@ -5,6 +5,7 @@ import { FormEvent, useState } from "react";
 type FormState = {
   fullName: string;
   company: string;
+  email: string;
   phone: string;
   needType: string;
   message: string;
@@ -13,6 +14,7 @@ type FormState = {
 const initialState: FormState = {
   fullName: "",
   company: "",
+  email: "",
   phone: "",
   needType: "Déménagement",
   message: "",
@@ -79,17 +81,28 @@ export default function ContactForm() {
         />
       </label>
       <label className="text-sm font-semibold text-slate-600">
+        Email
+        <input
+          required
+          type="email"
+          placeholder="vous@exemple.com"
+          value={form.email}
+          onChange={(event) => setForm((prev) => ({ ...prev, email: event.target.value }))}
+          className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/25"
+        />
+      </label>
+      <label className="text-sm font-semibold text-slate-600">
         Téléphone
         <input
           required
           type="tel"
-          placeholder="(+33 7 53 47 38 41)"
+          placeholder="(+33 7 49 71 50 14)"
           value={form.phone}
           onChange={(event) => setForm((prev) => ({ ...prev, phone: event.target.value }))}
           className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/25"
         />
       </label>
-      <label className="text-sm font-semibold text-slate-600">
+      <label className="text-sm font-semibold text-slate-600 md:col-span-2">
         Type de besoin
         <select
           value={form.needType}
