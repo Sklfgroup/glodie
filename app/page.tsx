@@ -198,36 +198,39 @@ export default function Home() {
 
       <section className="sticky top-0 z-30 border-b-4 border-[var(--color-accent)] bg-white/95 shadow-xl backdrop-blur-md">
         <div className="container-shell flex flex-col items-center justify-between gap-5 py-4 md:flex-row">
-          <div className="flex flex-wrap items-center justify-center gap-6 text-[var(--color-primary)]">
-            <div className="flex items-center gap-3">
-              <div className="grid h-11 w-11 place-items-center rounded-full bg-[var(--color-primary)]/10 text-xl">
-                <MdSupportAgent className="text-[28px]" />
+          <div className="grid w-full grid-cols-2 gap-4 text-[var(--color-primary)] md:w-auto">
+            <div className="flex min-w-0 items-center gap-2">
+              <div className="grid h-9 w-9 place-items-center rounded-full bg-[var(--color-primary)]/10 md:h-11 md:w-11">
+                <MdSupportAgent className="text-[22px] md:text-[28px]" />
               </div>
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">
+              <div className="min-w-0">
+                <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-slate-500 md:text-[10px]">
                   Ligne directe
                 </p>
-                <a href="tel:+33749715014" className="text-2xl font-bold hover:underline">
-                  (+33 7 49 71 50 14)
+                <a
+                  href="tel:+33749715014"
+                  className="break-words text-base font-bold leading-tight hover:underline sm:text-lg md:text-2xl"
+                >
+                  +33 7 49 71 50 14
                 </a>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="grid h-11 w-11 place-items-center rounded-full bg-[var(--color-primary)]/10 text-xl">
-                <FaWhatsapp className="text-[28px]" />
+            <div className="flex min-w-0 items-center gap-2">
+              <div className="grid h-9 w-9 place-items-center rounded-full bg-[var(--color-primary)]/10 md:h-11 md:w-11">
+                <FaWhatsapp className="text-[22px] md:text-[28px]" />
               </div>
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">
+              <div className="min-w-0">
+                <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-slate-500 md:text-[10px]">
                   WhatsApp
                 </p>
                 <a
                   href="https://wa.me/33753473841"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-2xl font-bold hover:underline"
+                  className="break-words text-base font-bold leading-tight hover:underline sm:text-lg md:text-2xl"
                 >
-                  (+33 7 53 47 38 41)
+                  +33 7 53 47 38 41
                 </a>
               </div>
             </div>
@@ -297,7 +300,7 @@ export default function Home() {
               <MdStar className="text-base" />
               NOS ENGAGEMENTS
             </p>
-            <h2 className="mb-10 text-4xl font-bold leading-tight">
+            <h2 className="mb-10 break-words text-4xl font-bold leading-tight">
               Pourquoi choisir
               <br />
               GLODIEXPOTRANS ?
